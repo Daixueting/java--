@@ -1,5 +1,7 @@
 package com.bit.impl;
 
+import com.bit.dao.ILinkedImpl;
+
 /**
  * @PACKAGE_NAME: com.bit.impl
  * @NAME: ILinked
@@ -24,4 +26,9 @@ public interface ILinked {
      int getLength();
      void display();
      void clear();
+     ILinkedImpl.Node FindKthToTail(int k); //返回倒数第k个节点的值
+     void partition(int x);  //基准
+     void deleteDuplication(); //删除重复节点
+     boolean chkPalindrome();  //回文
+    boolean hasCycle();//判断是否有环
 }
