@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+        <!--创建一个字符串对象，对象名为myName， new String（小比特）-->
+        <!--构造方法注入-->
+        <bean id="myName" class="java.lang.String" >
+                <constructor-arg value="小比特"></constructor-arg>
+        </bean>
+
+
+        <!--无参构造 创建对象,赋值，需要写set方法-->
+        <bean id="小鸭子" class="dewu.Duck">
+                <property name="name" value="丑小鸭" />
+                <property name="age" value="10" />
+
+        </bean>
+
+        <bean id="丑小鸭" class="dewu.Duck">
+                <property name="name" ref="myName" />
+                <property name="age" value="10" />
+
+        </bean>
+
+        <bean id="丑小鸭1" class="dewu.Duck">
+                <property name="name"  value="丑小鸭"/>
+                <property name="age" value="11" />
+
+        </bean>
+
+        <bean id="烤鸭店" class="dewu.DuckShop">
+                <property name="name" ref="myName" />
+                <property name="ducks" >
+                        <list>
+                                <ref bean="丑小鸭" />
+                                <ref bean="丑小鸭1" />
+                        </list>
+                </property>
+        </bean>
+
+        <!--其他类得静态方法-->
+        <bean id="duck6" class="dewu.DuckShop"  factory-method="duck6" />
+
+        <!--其他类得非静态方法-->
+<!--        <bean id="duck5" class="dewu.Duck" factory-bean="dewu.DuckShop" factory-method="duck5" />-->
+
+        <context:component-scan base-package="edu.shu.spring.domain"/>
+
+</beans>
+
